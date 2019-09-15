@@ -33,3 +33,4 @@ However, if the store does have enough of the product, customer's order is fulfi
 ->If a manager selects Add to Inventory, app  displays a prompt that will let the manager "add more" of any item currently in the store and it takes the all the details of the item to be added (loke : id and quantity).
 
 ->If a manager selects Add New Product, app allows the manager to add a completely new product to the store and asks manager for the details of the item(like : name, departmentName, price and quantity).
+
