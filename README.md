@@ -34,3 +34,5 @@ However, if the store does have enough of the product, customer's order is fulfi
 
 ->If a manager selects Add New Product, app allows the manager to add a completely new product to the store and asks manager for the details of the item(like : name, departmentName, price and quantity).
 
+Links of the videos :
+https://github.com/Aakratigoel/bamazon/tree/master/videos
