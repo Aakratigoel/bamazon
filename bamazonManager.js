@@ -42,7 +42,14 @@ function displayMenu() {
                 connection.query("Select * from  products WHERE stock_quantity<5",
                     function (err, res) {
                         if (err) throw err;
-                        console.table(res);
+                        if(res.length === 0)
+                        {
+                            console.log("Sufficient Quantity for all the products")
+                        }
+                        else{
+                            console.table(res);
+                        }
+                       
                         connection.end();
                     })
             }
@@ -67,11 +74,11 @@ function displayMenu() {
                                 item_id: answers.itemIdToAdd,
                             }, function (err, res) {
                                 if (err) throw err;
-                                console.table(res[0]);
+                                // console.table(res);
                                 var oldQuantity = parseInt(res[0].stock_quantity);
-                                console.log(oldQuantity);
+                               // console.log(oldQuantity);
                                 var newQuantiy = oldQuantity + parseInt(answers.quantity);
-                                console.log(newQuantiy);
+                                console.log("New Quantity:"+newQuantiy);
                                 connection.query("Update products SET ? WHERE ?",
                                     [{
                                         stock_quantity: newQuantiy
@@ -79,7 +86,7 @@ function displayMenu() {
                                     {
                                         item_id: answers.itemIdToAdd
                                     }],
-                                    function (err, res) {
+                                    function (err) {
                                         if (err) throw err;
                                         // console.log(res.rowsAffected);
                                         connection.end();
@@ -98,7 +105,7 @@ function displayMenu() {
                         {
                             type: 'input',
                             name: 'departmentName',
-                            message: 'Enter the name of the department'
+                            message: 'Enter the name of the department',
                         },
                         {
                             type: 'input',
@@ -120,11 +127,11 @@ function displayMenu() {
                                     price:answers.itemPrice,
                                     stock_quantity:answers.itemQuantity
                             },
-                            function (err, res) {
+                            function (err) {
                                 if (err) throw err;
                                 connection.end();
                                 //console.log(res.affectedRows + " products updated!\n");
-                               console.log("New product insserted");
+                               console.log("New product inserted");
                             }
                         );  
                          

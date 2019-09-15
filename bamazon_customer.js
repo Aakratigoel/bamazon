@@ -27,6 +27,7 @@ var connection = mysql.createConnection({
         // Log all results of the SELECT statement
         console.table(res);
         userOrder();
+        
     });
 }
 function userOrder()
@@ -53,6 +54,7 @@ function userOrder()
       {
         if (err) throw err;
         var oldStockQuantity = res[0].stock_quantity;
+        var productSale = res[0].product_sale;
         //Check if item is available
         var newStockQuantity =oldStockQuantity-answers.quantity;
         if(oldStockQuantity >= answers.quantity)
@@ -70,14 +72,32 @@ function userOrder()
               if (err) throw err;
               //console.log(res.affectedRows + " products updated!\n");
               console.log("Total amount:"+"$"+totalCost);
+              productSale= productSale + totalCost;
+                connection.query("Update products SET ? WHERE ?",
+                [
+                  {
+                    product_sale: productSale
+                  },
+                  {
+                    item_id: answers.itemId
+                  }
+                ],
+                function(err,res)
+                {
+                  if (err) throw err;
+                  connection.end();
+                  console.log("Item bought");
+                })
             }
           );
         }
         else{
             console.log("Insufficient quantity!!")
         }
-        connection.end();
+        
       })
+     
     });
+    
   }
  

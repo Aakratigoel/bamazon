@@ -17,3 +17,13 @@ INSERT INTO products (product_name , department_name,price,stock_quantity)
  ("CoffeeTable","Furniture","300","50"),("Armrest","Furniture","250","80"),
  ("Levis_Jeans","ClothingAndAccessories","35","300"),("Wine","FoodAndDrinks","40","200"),
  ("Potato_Chips","FoodAndDrinks","5","200"),("Macbook","Electronics","999","200");
+ CREATE TABLE departments(
+   department_id INT NOT NULL AUTO_INCREMENT,
+   department_name VARCHAR(45) NULL,
+   over_head_costs DECIMAL(10,2) NULL,
+   PRIMARY KEY(department_id)
+ );
+ INSERT INTO departments(department_name,over_head_costs)VALUES("Electronics","1000");
+ INSERT INTO departments(department_name,over_head_costs)VALUES("ClothingAndAccessories","500");
+ INSERT INTO departments(department_name,over_head_costs)VALUES("Furniture","1000");
+ INSERT INTO departments(department_name,over_head_costs)VALUES("FoodAndDrinks","200");
